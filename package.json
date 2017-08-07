@@ -1,0 +1,27 @@
+{
+  "name": "chrometrace-sitespeed.io-plugin",
+  "version": "0.0.1",
+  "description": "Chrometrace plugin for sitespeed.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/__tests__/*.js"
+  },
+  "keywords": [
+    "performance",
+    "sitespeed.io",
+    "chrome",
+    "trace",
+    "timeline"
+  ],
+  "author": "Viorel Cojocaru <vio@mavrix.es>",
+  "license": "MIT",
+  "dependencies": {
+    "devtools-timeline-model": "^1.3.1",
+    "lodash.foreach": "^4.5.0",
+    "sitespeed.io": "^5.4.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.5.0"
+  }
+}

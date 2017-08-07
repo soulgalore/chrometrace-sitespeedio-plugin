@@ -1,0 +1,76 @@
+[
+  {
+    "timeline": {
+      "activity": {
+        "EvaluateScript": 287.0269998013973,
+        "Layout": 190.0959999859333,
+        "RecalculateStyle": 30.521999955177307,
+        "MinorGC": 13.949000030755997,
+        "UpdateLayerTree": 13.173000127077103,
+        "CompositeLayers": 10.000999957323074,
+        "Paint": 6.168000221252441,
+        "DOMGC": 3.5789999961853027,
+        "ParseHTML": 2.68299999833107,
+        "CompileScript": 2.281000018119812,
+        "ImageDecode": 0.2850000262260437,
+        "MajorGC": 0.01600000262260437
+      },
+      "category": {
+        "scripting": 306.85199984908104,
+        "rendering": 233.7910000681877,
+        "painting": 16.45400020480156,
+        "loading": 2.68299999833107
+      }
+    }
+  },
+  {
+    "timeline": {
+     "activity": {
+      "EvaluateScript": 281.32800033688545,
+      "Layout": 174.69999995827675,
+      "RecalculateStyle": 23.675000071525574,
+      "MinorGC": 12.210999995470047,
+      "UpdateLayerTree": 11.157999783754349,
+      "CompositeLayers": 8.032000064849854,
+      "Paint": 7.12000036239624,
+      "ParseHTML": 2.8170000314712524,
+      "DOMGC": 2.8109999895095825,
+      "CompileScript": 2.4220000207424164,
+      "ImageDecode": 0.28299999237060547,
+      "MajorGC": 0.01299998164176941
+    },
+    "category": {
+      "scripting": 298.78500032424927,
+      "rendering": 209.53299981355667,
+      "painting": 15.4350004196167,
+      "loading": 2.8170000314712524
+    }
+     
+    }
+  },
+  {
+    "timeline": {
+      "activity": {
+        "EvaluateScript": 303.22800025343895,
+        "Layout": 180.3560000360012,
+        "RecalculateStyle": 25.808000028133392,
+        "CompositeLayers": 17.562000066041946,
+        "MinorGC": 12.201999932527542,
+        "UpdateLayerTree": 10.478999942541122,
+        "Paint": 8.400000035762787,
+        "CompileScript": 3.6799999475479126,
+        "ParseHTML": 3.302000015974045,
+        "DOMGC": 2.1959999799728394,
+        "ImageDecode": 0.24900001287460327,
+        "MajorGC": 0.010000020265579224
+      },
+      "category": {
+        "scripting": 321.3160001337528,
+        "rendering": 216.64300000667572,
+        "painting": 26.211000114679337,
+        "loading": 3.302000015974045
+      }
+
+    }
+  }
+]
