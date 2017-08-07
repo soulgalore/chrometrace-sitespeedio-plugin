@@ -4,6 +4,7 @@
   "description": "Chrometrace plugin for sitespeed.io",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint index.js src/*.js",
     "test": "mocha src/__tests__/*.js"
   },
   "keywords": [
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.0",
+    "eslint": "^4.4.1",
     "mocha": "^3.5.0"
   }
 }
