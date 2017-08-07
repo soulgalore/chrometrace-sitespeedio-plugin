@@ -4,7 +4,7 @@ const analyzer = require('./src/analyzer');
 const aggregator = require('./src/aggregator');
 
 // We need to prefix the plugin name with 'browsertime' to force
-// lib/plugins/graphite to add browser/connectivity
+// lib/plugins/graphite to add connectivity
 // https://github.com/sitespeedio/sitespeed.io/blob/master/lib/plugins/graphite/data-generator.js#L12
 const pluginName = 'browsertimeChrometrace';
 const make = messageMaker(pluginName).make;
@@ -36,9 +36,9 @@ function processChrometraceMessage(message, queue, options) {
         )
     );
 
-    runIndex[url] = runIndex[url] + 1
+    runIndex[url] = runIndex[url] + 1;
 
-    // On the last run for each url, trigger pageSummary
+    // Trigger pageSummary for each last run
     if (runIndex[url] === options.iterations) {
         queue.postMessage(
             make(
@@ -49,10 +49,8 @@ function processChrometraceMessage(message, queue, options) {
                     group
                 }
             )
-        )
+        );
     }
-
-    return
 }
 
 module.exports = {
@@ -61,14 +59,12 @@ module.exports = {
     },
 
     open(context, options) {
-        this.context = context;
-        this.options = options.bigrig || {};
+        this.options = options.chrometrace || {};
         this.options.iterations = options.browsertime.iterations;
     },
 
     processMessage(message, queue) {
         if (message.type !== 'browsertime.chrometrace') {
-            // this.context.log('--browsertime.chrome.collectTracingEvents flag is not set');
             return;
         }
 

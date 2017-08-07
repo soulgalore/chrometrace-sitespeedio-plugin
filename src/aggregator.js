@@ -10,7 +10,7 @@ function walkStats(timelineRun, cb) {
     forEach(groups, (groupMetrics, groupName) => {
       forEach(groupMetrics, (value, name) => cb(typeName, groupName, name, value));
     });
-  })
+  });
 }
 
 function addToAggregate(timelineRun, url) {
@@ -29,13 +29,13 @@ function addToAggregate(timelineRun, url) {
 }
 
 function getSummary(url) {
-  walkStats(aggregated[url], (typeName, groupName, name, value) => {
+  walkStats(aggregated[url], (typeName, groupName, name, value) =>
     statsHelpers.setStatsSummary(
       summary,
       [typeName, groupName, name],
       value
     )
-  })
+  )
 
   return summary;
 }
