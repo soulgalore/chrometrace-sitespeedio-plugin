@@ -2,7 +2,8 @@
 
 Expose [devtools-timeline](https://www.npmjs.com/package/devtools-timeline-model) data to [sitespeed.io](https://www.sitespeed.io).
 
-![Grafana example](screenshot.jpg)
+![Grafana
+example](https://www.dropbox.com/s/2gkktweqxcsbxdg/chrometrace-sitespeed-plugin.jpg?raw=1)
 
 ## Install
 
