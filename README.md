@@ -7,7 +7,7 @@ Expose [devtools-timeline](https://www.npmjs.com/package/devtools-timeline-model
 ## Install
 
 ```shell
-npm install chrometrace-sitespeed.io-plugin
+npm install chrometrace-sitespeedio-plugin
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ npm install chrometrace-sitespeed.io-plugin
 
 ```shell
 sitespeed.io -n 1 \
-    --plugins.load ./node_modules/chrometrace-sitespeed.io-plugin \
+    --plugins.load ./node_modules/chrometrace-sitespeedio-plugin \
     --browsertime.chrome.collectTracingEvents \
     https://mobile.twitter.com/sitespeedio
 ```
@@ -26,7 +26,7 @@ sitespeed.io -n 1 \
 ```shell
 docker run --rm -v "$(pwd)/node_modules":/node_modules \
     sitespeedio/sitespeed.io \
-    --plugins.load /node_modules/chrometrace-sitespeed.io-plugin \
+    --plugins.load /node_modules/chrometrace-sitespeedio-plugin \
     --browsertime.chrome.collectTracingEvents \
     https://mobile.twitter.com/sitespeedio
 ```

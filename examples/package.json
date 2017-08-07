@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "chrometrace-sitespeed.io-plugin": "~1.0.0"
+    "chrometrace-sitespeedio-plugin": "~1.0.0"
   }
 }

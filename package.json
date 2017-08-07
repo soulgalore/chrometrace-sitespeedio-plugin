@@ -1,10 +1,11 @@
 {
-  "name": "chrometrace-sitespeed.io-plugin",
-  "version": "0.0.1",
+  "name": "chrometrace-sitespeedio-plugin",
+  "version": "1.0.0",
   "description": "Chrometrace plugin for sitespeed.io",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js src/*.js",
+    "prepublish": "npm run lint && npm run test",
     "test": "mocha src/__tests__/*.js"
   },
   "keywords": [
