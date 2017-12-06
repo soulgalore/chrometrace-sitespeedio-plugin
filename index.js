@@ -1,12 +1,11 @@
-const messageMaker = require("sitespeed.io/lib/support/messageMaker");
-
-const analyzer = require("./src/analyzer");
-const aggregator = require("./src/aggregator");
+const messageMaker = require('sitespeed.io/lib/support/messageMaker');
+const analyzer = require('./src/analyzer');
+const aggregator = require('./src/aggregator');
 
 // We need to prefix the plugin name with 'browsertime' to force
 // lib/plugins/graphite to add connectivity
 // https://github.com/sitespeedio/sitespeed.io/blob/master/lib/plugins/graphite/data-generator.js#L12
-const pluginName = "browsertimeChrometrace";
+const pluginName = 'browsertimeChrometrace';
 const make = messageMaker(pluginName).make;
 
 let runIndex = {};
@@ -17,7 +16,7 @@ function processChrometraceMessage(message, queue, statsHelpers, options) {
 
   aggregator.addToAggregate(results, url, statsHelpers);
 
-  if (typeof runIndex[url] === "undefined") {
+  if (typeof runIndex[url] === 'undefined') {
     runIndex[url] = 0;
   }
 
@@ -65,7 +64,7 @@ module.exports = {
   },
 
   processMessage(message, queue) {
-    if (message.type !== "browsertime.chrometrace") {
+    if (message.type !== 'browsertime.chrometrace') {
       return;
     }
 

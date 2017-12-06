@@ -1,4 +1,4 @@
-const forEach = require("lodash.foreach");
+const forEach = require('lodash.foreach');
 
 let aggregated = {};
 let grouped = {};
@@ -15,7 +15,7 @@ function walkStats(timelineRun, cb) {
 }
 
 function addToAggregate(timelineRun, url, statsHelpers) {
-  if (typeof aggregated[url] === "undefined") {
+  if (typeof aggregated[url] === 'undefined') {
     aggregated[url] = {};
   }
 
