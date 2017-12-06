@@ -11,68 +11,68 @@ const make = messageMaker(pluginName).make;
 let runIndex = {};
 
 function processChrometraceMessage(message, queue, statsHelpers, options) {
-  const { url, group, data } = message;
-  const results = analyzer(data);
+    const { url, group, data } = message;
+    const results = analyzer(data);
 
-  aggregator.addToAggregate(results, url, statsHelpers);
+    aggregator.addToAggregate(results, url, statsHelpers);
 
-  if (typeof runIndex[url] === 'undefined') {
-    runIndex[url] = 0;
-  }
+    if (typeof runIndex[url] === 'undefined') {
+        runIndex[url] = 0;
+    }
 
-  queue.postMessage(
-    make(
-      `${pluginName}.run`,
-      {
-        runIndex: runIndex[url],
-        data: results
-      },
-      {
-        url,
-        group,
-        runIndex
-      }
-    )
-  );
-
-  runIndex[url] = runIndex[url] + 1;
-
-  // Trigger pageSummary for each last run
-  if (runIndex[url] === options.iterations) {
     queue.postMessage(
-      make(
-        `${pluginName}.pageSummary`,
-        aggregator.getSummary(url, statsHelpers),
-        {
-          url,
-          group
-        }
-      )
+        make(
+            `${pluginName}.run`,
+            {
+                runIndex: runIndex[url],
+                data: results
+            },
+            {
+                url,
+                group,
+                runIndex
+            }
+        )
     );
-  }
+
+    runIndex[url] = runIndex[url] + 1;
+
+    // Trigger pageSummary for each last run
+    if (runIndex[url] === options.iterations) {
+        queue.postMessage(
+            make(
+                `${pluginName}.pageSummary`,
+                aggregator.getSummary(url, statsHelpers),
+                {
+                    url,
+                    group
+                }
+            )
+        );
+    }
 }
 
 module.exports = {
-  name() {
-    return pluginName;
-  },
+    name() {
+        return pluginName;
+    },
 
-  open(context, options) {
-    this.options = options.chrometrace || {};
-    this.options.iterations = options.browsertime.iterations;
-    this.statsHelpers = context.statsHelpers;
-  },
+    open(context, options) {
+        this.options = options.chrometrace || {};
+        this.options.iterations = options.browsertime.iterations;
+        this.statsHelpers = context.statsHelpers;
+    },
 
-  processMessage(message, queue) {
-    if (message.type !== 'browsertime.chrometrace') {
-      return;
+    processMessage(message, queue) {
+        if (message.type !== 'browsertime.chrometrace') {
+            return;
+        }
+
+        return processChrometraceMessage(
+            message,
+            queue,
+            this.statsHelpers,
+            this.options
+        );
     }
-
-    return processChrometraceMessage(
-      message,
-      queue,
-      this.statsHelpers,
-      this.options
-    );
-  }
 };
