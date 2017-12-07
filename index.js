@@ -1,5 +1,4 @@
 const messageMaker = require('sitespeed.io/lib/support/messageMaker');
-
 const analyzer = require('./src/analyzer');
 const aggregator = require('./src/aggregator');
 
@@ -11,11 +10,11 @@ const make = messageMaker(pluginName).make;
 
 let runIndex = {};
 
-function processChrometraceMessage(message, queue, options) {
+function processChrometraceMessage(message, queue, statsHelpers, options) {
     const { url, group, data } = message;
     const results = analyzer(data);
 
-    aggregator.addToAggregate(results, url);
+    aggregator.addToAggregate(results, url, statsHelpers);
 
     if (typeof runIndex[url] === 'undefined') {
         runIndex[url] = 0;
@@ -43,7 +42,7 @@ function processChrometraceMessage(message, queue, options) {
         queue.postMessage(
             make(
                 `${pluginName}.pageSummary`,
-                aggregator.getSummary(url),
+                aggregator.getSummary(url, statsHelpers),
                 {
                     url,
                     group
@@ -55,12 +54,13 @@ function processChrometraceMessage(message, queue, options) {
 
 module.exports = {
     name() {
-        return pluginName
+        return pluginName;
     },
 
     open(context, options) {
         this.options = options.chrometrace || {};
         this.options.iterations = options.browsertime.iterations;
+        this.statsHelpers = context.statsHelpers;
     },
 
     processMessage(message, queue) {
@@ -68,6 +68,11 @@ module.exports = {
             return;
         }
 
-        return processChrometraceMessage(message, queue, this.options);
+        return processChrometraceMessage(
+            message,
+            queue,
+            this.statsHelpers,
+            this.options
+        );
     }
 };
