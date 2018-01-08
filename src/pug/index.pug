@@ -1,0 +1,27 @@
+- const chromeTrace = pageInfo.data.browsertimeChrometrace.pageSummary || pageInfo.data.browsertimeChrometrace.run.data 
+
+.row
+  .one-half.column
+    h2 Activity
+    table
+        thead
+        tr
+            th Name
+            th Time (ms)
+        tbody
+            each value, key in chromeTrace.timeline.activity
+                tr
+                    td #{key}  
+                    td #{pageInfo.data.browsertimeChrometrace.pageSummary ? value.median : value.toFixed(4)}
+  .one-half.column
+    h2 Category
+    table
+        thead
+        tr
+            th Name
+            th Time (ms)
+        tbody
+            each value, key in chromeTrace.timeline.category
+                tr
+                    td #{key}  
+                    td #{pageInfo.data.browsertimeChrometrace.pageSummary ? value.median : value.toFixed(4)}
